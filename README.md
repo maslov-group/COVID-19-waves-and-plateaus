@@ -1,0 +1,2 @@
+# Agent-based model for the stochastic social behavior coupled to COVID-19 dynamics 
+This Jupyter notebook contains the agent-based model simulation for the paper "Stochastic social behavior coupled to COVID-19 dynamics leads to waves, plateaus and an endemic state". The notebook itself contains all the necessary codes for the simulation. In the end, it shows that the simulation results agree with the predictions from the dynamical systems theoretically derived in the paper.
