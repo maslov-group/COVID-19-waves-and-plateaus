@@ -1,4 +1,4 @@
-function [RM_sample, inc_sample]=SIR_CIR_output(fw_params,sw_params,time)
+function [RM_sample, inc_sample]=SIR_output(fw_params,sw_params,time)
 % The function returns two vectors: R_0*M(t) and incidence rate per capita.
 % The first 4 parameters (j,R1,t1,R2) are used to fit the first wave of the 
 % epidemic, prior to July 15, 2020. 
@@ -32,8 +32,8 @@ k=200;
 dt=1./k;
 Tmax=max(time)+t_start;
 tau_g=5;
-%tau_b=365*5;
 tau_b=365*1;
+%tau_b=365*5;
 %
 % varied in sensitivity analysis from: 
 % 18.5651 (the best fit for Northeast) 
@@ -47,7 +47,7 @@ k0=0.4;
 %
 mu=1/(1+tau_g/tau_s);
 kappa=2;
-lambda=(1+1/kappa).*(1+2/kappa+mu/k0)/(1+1/kappa+mu/k0);
+lambda=1;
 %
 D1=30;
 t2=90; 
@@ -70,7 +70,8 @@ for i=1:Tmax/abs(dt)
 dh=(M_t*j./k0-rw_rate.*h.*(1+h)).*dt;
 dS=(-inc+(1-S)./tau_b)*dt;
 dj=1/tau_g*((R./(1+h).^(2))-1).*j.*dt;
-h=h+dh;
+%h=h+dh;
+h=0;
 S=S+dS;
 j=j+dj;
 j=j*(j>0.0000001);
